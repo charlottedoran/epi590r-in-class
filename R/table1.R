@@ -35,5 +35,9 @@ tbl_summary(
 	digits = list(income ~ c(3,3),
 								starts_with("sleep") ~ c(1,1))
 	) |>
-	add_p(all_categorical() ~ "chisq.test",
-				all_continuous() ~ "t.test")
+	add_p(test = list(all_categorical() ~ "chisq.test",
+				all_continuous() ~ "t.test")) |>
+	modify_table_styling(
+		columns = label,
+		rows = label == "Race/ethnicity",
+		footnote = "Information on race/ethnicity data collection can be found at https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/household/race-ethnicity-immigration-data")
