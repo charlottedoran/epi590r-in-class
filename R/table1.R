@@ -21,22 +21,24 @@ tbl_summary(
 	by = sex_cat,
 	include = c(region_cat,
 							race_eth_cat,
-							starts_with("sleep"),
-							income),
-	label = list(sex_cat ~ "Sex",
-							 region_cat ~ "Region",
+							income,
+							starts_with("sleep")),
+	label = list(region_cat ~ "Region",
 							 race_eth_cat ~ "Race/ethnicity",
 							 income ~ "Income (10th percentile, 90th percentile)",
 							 sleep_wkdy ~ "Weekday sleep duration (min, max hours)",
 							 sleep_wknd ~ "Weekend sleep duration (min, max hours)"),
 	missing_text = "Missing",
-	statistic = list(income ~ "{p10}, {p90}",
+	statistic = list(income ~ "${p10}, ${p90}",
 									 starts_with("sleep") ~ "{min} - {max}"),
-	digits = list(income ~ c(3,3),
+	#I made digits equal to 2 for income rather than 3
+	digits = list(income ~ c(2,2),
 								starts_with("sleep") ~ c(1,1))
 	) |>
 	add_p(test = list(all_categorical() ~ "chisq.test",
 				all_continuous() ~ "t.test")) |>
+	add_overall(col_label = "**Total**") |>
+	bold_labels() |>
 	modify_table_styling(
 		columns = label,
 		rows = label == "Race/ethnicity",
