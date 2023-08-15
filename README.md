@@ -1,3 +1,4 @@
 # EPI590R repo
 
-This repository belongs to Charlotte Doran
+Author: Charlotte Doran
+This repository is for the in-class portions of EPI 590R
