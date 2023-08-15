@@ -41,11 +41,10 @@ stats <- list(n = nrow(nlsy), med_income = median(nlsy$income, na.rm = TRUE))
 
 This study used data from the National Longitudinal Survey of Youth, which contains data from `r format(stats$n, big.mark = ",")` participants with a median income of \$`r format(round(stats$med_income, 0), big.mark = ",")`. An overview of the study population can be found in @tbl-1. Over half of male participants (`r gtsummary::inline_text(table1, variable = "race_eth_cat", column = "Male", level = "Non-Black, Non-Hispanic", pattern = "{n} [{p}%]")`) were non-Black, non-Hispanic.
 
-**Table 1**
-
 ```{r}
 #| label: tbl-1
 #| tbl-cap: Demographic characteristics of NLSY participants
+
 table1
 ```
 
