@@ -1,6 +1,6 @@
 x <- 4
-
 x^2
+
 #Create a function to square a number
 square <- function(x) {
 	x^2
